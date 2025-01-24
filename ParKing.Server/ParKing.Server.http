@@ -1,0 +1,14 @@
+@ParKing.Server_HostAddress = http://localhost:5075
+
+GET {{ParKing.Server_HostAddress}}/api/users/populate
+Accept: application/json
+
+###
+
+POST {{ParKing.Server_HostAddress}}/api/auth/validate
+Accept: application/json
+Content-Type: application/json
+{
+  "loginEmail": "testuser",
+  "password": "password123"
+}

@@ -1,0 +1,95 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 250px;
+    background-color: #343a40;
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+.sidebar-content {
+    padding: 20px;
+}
+
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+}
+
+    .sidebar a:hover {
+        background-color: #495057;
+    }
+
+.content {
+    margin-left: 250px;
+    padding: 20px;
+    transition: margin-left 0.3s;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-250px);
+    }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+    .content {
+        margin-left: 0;
+    }
+}
+
+.hover-effect:hover {
+    background-color: #f8f9fa; /* Light gray hover effect */
+    color: #0d6efd; /* Bootstrap primary blue for text on hover */
+    border-radius: 0.375rem; /* Optional for rounded effect */
+}
+
+li .active {
+    background-color: #eff6ff;
+}
+.alert-custom {
+    position: fixed; /* Fix the alert to the viewport */
+    top: 20px; /* Distance from the top of the viewport */
+    right: 20px; /* Align to the right */
+    width: auto;
+    max-width: 400px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    z-index: 1050; /* Ensures it appears above other elements */
+    padding: 15px;
+    word-wrap: break-word;
+}
+
+@media (max-width: 768px) {
+    .alert-custom {
+        top: 10px; /* Smaller gap for mobile */
+        right: 10px; /* Adjust spacing */
+        left: 10px; /* Stretch it across the viewport */
+        max-width: 100%; /* Allow full width for small screens */
+        border-radius: 4px;
+    }
+}
+
+
+.alert-wrapper {
+    position: fixed;
+    top: 0; /* Adjust to your preference */
+    right: 0;
+    z-index: 1100; /* Ensure it’s above everything */
+    pointer-events: none; /* Prevent blocking interactions below */
+    display: flex;
+    justify-content: flex-end; /* Align alerts to the right */
+    width: 100%; /* Full-width container */
+    padding: 10px; /* Space for alerts */
+}

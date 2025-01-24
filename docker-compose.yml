@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  parking.server:
+    image: ${DOCKER_REGISTRY-}parkingserver
+    build:
+      context: .
+      dockerfile: ParKing.Server/Dockerfile
+    ports:
+      - "5000:8080"  # Expose the API on port 5000
+      - "5001:8081"  # Expose additional port if needed
+    environment:
+      - ConnectionStrings__DefaultConnection=Server=database;Database=ParkingDB;User=sa;Password=YourStrongPassword123;
+    depends_on:
+      - database  # Ensure the database starts before the backend service
+
+  database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sqlserver
+    environment:
+      ACCEPT_EULA: "Y"  # Accept the Microsoft license agreement
+      MSSQL_SA_PASSWORD: "YourStrongPassword123"
+      MSSQL_PID: "Express"  # Use the free Express edition
+    ports:
+      - "1433:1433"  # Expose the SQL Server port
+    volumes:
+      - sql_data:/var/opt/mssql  # Persist data across container restarts
+
+volumes:
+  sql_data:  # Named volume for persisting database data
