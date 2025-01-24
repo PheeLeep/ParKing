@@ -276,6 +276,11 @@ const Tickets = () => {
 
     useEffect(() => {
         refreshTickets(); // Fetch users on initial render
+
+        const intervalId = setInterval(() => {
+            refreshTickets();
+        }, 5000);
+        return () => clearInterval(intervalId);
     }, []);
 
     return (

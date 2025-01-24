@@ -74,6 +74,12 @@ const Payments = () => {
     useEffect(() => {
         refreshTickets();
         fetchSlot();
+
+        const intervalId = setInterval(() => {
+            refreshTickets();
+            fetchSlot();
+        }, 5000);
+        return () => clearInterval(intervalId);
     }, []);
 
     return (

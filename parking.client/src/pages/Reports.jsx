@@ -60,6 +60,12 @@ const Reports = () => {
     useEffect(() => {
         refreshTickets();
         refreshViolations();
+
+        const intervalId = setInterval(() => {
+            refreshTickets();
+            refreshViolations();
+        }, 5000);
+        return () => clearInterval(intervalId);
     }, []);
 
     return (

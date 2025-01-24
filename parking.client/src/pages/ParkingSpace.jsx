@@ -77,9 +77,17 @@ const ParkingSpace = () => {
     }, [sections]);
 
     useEffect(() => {
-        if (selectedSection) {
-            fetchSlotsForSection(selectedSection); 
+        const executeSelection = () => {
+            if (selectedSection) {
+                fetchSlotsForSection(selectedSection);
+            }
         }
+
+        const timerOut = setInterval(() => {
+            executeSelection();
+        }, 5000);
+        executeSelection();
+        return () => clearInterval(timerOut);
     }, [selectedSection]);
 
     return (

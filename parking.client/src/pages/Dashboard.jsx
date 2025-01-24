@@ -37,7 +37,12 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        fetchSlot(); 
+        fetchSlot();
+
+        const interval = setInterval(() => {
+            fetchSlot();
+        }, 5000); 
+        return () => clearInterval(interval);
     }, []);
 
     const formatCurrency = (value) => {
